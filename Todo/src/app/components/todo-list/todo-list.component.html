@@ -1,0 +1,15 @@
+<h1 class="todo-header">Angular To Do List</h1>
+
+
+<div class="todo-container">
+  <input class="todo-input" type="text" placeholder="Enter To-Do and Press Enter" [(ngModel)]="todoItemText" (keyup.enter)="createNewTodo()">
+  <button class="clear-button" (click)="clearTodos('all')">Clear All Todos</button>
+  <button class="clear-button2" (click)="clearTodos('completed')">Clear Completed Todos</button>
+
+  <ul class="todo-list">
+    <li *ngFor="let item of allTodoItems" class="todo-item">
+      <input type="checkbox" class="todo-item-checkbox" (change)="toggleComplete(item)">
+      <label class="todo-item-label" [ngClass]="{ 'completed': item.completed }">{{item.itemName}}</label>
+    </li>
+  </ul>
+</div>
